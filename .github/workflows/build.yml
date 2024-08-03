@@ -21,6 +21,7 @@ jobs:
         python-version: '3.8'
     - name: Install dependencies
       run: |
+        pip install
         pip install pyinstaller
         pip install "numpy<2"
         pip install torch==2.3.1 --extra-index-url https://download.pytorch.org/whl/cpu
@@ -50,6 +51,7 @@ jobs:
         python-version: '3.8'
     - name: Install dependencies
       run: |
+        pip install
         pip install pyinstaller
         pip install "numpy<2"
         pip install torch==2.3.1+cu121 -f https://download.pytorch.org/whl/torch_stable.html
@@ -79,6 +81,7 @@ jobs:
         python-version: '3.8'
     - name: Install dependencies
       run: |
+        pip install
         pip install pyinstaller
         pip install "numpy<2"
         pip install torch==2.3.1 --extra-index-url https://download.pytorch.org/whl/cpu
@@ -108,6 +111,7 @@ jobs:
         python-version: '3.8'
     - name: Install dependencies
       run: |
+        pip install
         pip install pyinstaller
         pip install "numpy<2"
         pip install torch==2.3.1 --extra-index-url https://download.pytorch.org/whl/cpu
@@ -137,6 +141,7 @@ jobs:
         python-version: '3.8'
     - name: Install dependencies
       run: |
+        pip install
         pip install pyinstaller
         pip install "numpy<2"
         pip install torch==2.3.1+cu121 -f https://download.pytorch.org/whl/torch_stable.html
