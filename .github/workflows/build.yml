@@ -29,7 +29,7 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m pyinstaller -F -n "libretranslate" main.py
+        python -m PyInstaller -F -n "libretranslate" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -58,7 +58,7 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m pyinstaller -F -n "libretranslate_cuda" main.py
+        python -m PyInstaller -F -n "libretranslate_cuda" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -87,7 +87,7 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m pyinstaller -F -n "libretranslate" main.py
+        python -m PyInstaller -F -n "libretranslate" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -116,7 +116,7 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m pyinstaller -F -n "libretranslate" main.py
+        python -m PyInstaller -F -n "libretranslate" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -145,7 +145,7 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m pyinstaller -F -n "libretranslate_cuda" main.py
+        python -m PyInstaller -F -n "libretranslate_cuda" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
