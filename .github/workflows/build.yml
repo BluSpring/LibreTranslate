@@ -1,0 +1,158 @@
+name: Build Executables
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+  # Manual trigger in case the release needs to be rerun
+
+jobs:
+
+  tests:
+    uses: BluSpring/LibreTranslate/.github/workflows/run-tests.yml@main
+    secrets: inherit
+
+  # Build Windows EXE with CPU-only support
+  build-windows:
+    needs: [ tests ]
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install pyinstaller
+        pip install "numpy<2"
+        pip install torch==2.3.1 --extra-index-url https://download.pytorch.org/whl/cpu
+
+    - name: Build
+      run: |
+        pip install Babel==2.11.0
+        python scripts/compile_locales.py
+        python -m pyinstaller -F -n "libretranslate" main.py
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: 'Windows Artifacts (CPU)'
+        path: 'dist/'
+
+  # Build Windows EXE with CUDA support
+  build-windows-cuda:
+    needs: [ tests ]
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install pyinstaller
+        pip install "numpy<2"
+        pip install torch==2.3.1+cu121 -f https://download.pytorch.org/whl/torch_stable.html
+
+    - name: Build
+      run: |
+        pip install Babel==2.11.0
+        python scripts/compile_locales.py
+        python -m pyinstaller -F -n "libretranslate_cuda" main.py
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: 'Windows Artifacts (CUDA)'
+        path: 'dist/'
+
+  # Build MacOS file
+  build-macos:
+    needs: [ tests ]
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install pyinstaller
+        pip install "numpy<2"
+        pip install torch==2.3.1 --extra-index-url https://download.pytorch.org/whl/cpu
+
+    - name: Build
+      run: |
+        pip install Babel==2.11.0
+        python scripts/compile_locales.py
+        python -m pyinstaller -F -n "libretranslate" main.py
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: 'MacOS Artifacts (CPU)'
+        path: 'dist/'
+
+  # Build Linux file with CPU-only support
+  build-linux:
+    needs: [ tests ]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install pyinstaller
+        pip install "numpy<2"
+        pip install torch==2.3.1 --extra-index-url https://download.pytorch.org/whl/cpu
+
+    - name: Build
+      run: |
+        pip install Babel==2.11.0
+        python scripts/compile_locales.py
+        python -m pyinstaller -F -n "libretranslate" main.py
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: 'Linux Artifacts (CPU)'
+        path: 'dist/'
+
+  # Build Linux file with CUDA support
+  build-linux-cuda:
+    needs: [ tests ]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.8'
+    - name: Install dependencies
+      run: |
+        pip install pyinstaller
+        pip install "numpy<2"
+        pip install torch==2.3.1+cu121 -f https://download.pytorch.org/whl/torch_stable.html
+
+    - name: Build
+      run: |
+        pip install Babel==2.11.0
+        python scripts/compile_locales.py
+        python -m pyinstaller -F -n "libretranslate_cuda" main.py
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: 'Linux Artifacts (CUDA)'
+        path: 'dist/'
