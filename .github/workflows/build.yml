@@ -3,6 +3,11 @@ name: Build Executables
 on:
   workflow_dispatch:
   # Manual trigger in case the release needs to be rerun
+  push:
+    branches:
+      - main
+    tags:
+      - v*
 
 jobs:
 
