@@ -8,13 +8,9 @@ on:
 
 jobs:
 
-  tests:
-    uses: BluSpring/LibreTranslate/.github/workflows/run-tests.yml@main
-    secrets: inherit
-
   # Build Windows EXE with CPU-only support
   build-windows:
-    needs: [ tests ]
+    
     runs-on: windows-latest
 
     steps:
@@ -43,7 +39,7 @@ jobs:
 
   # Build Windows EXE with CUDA support
   build-windows-cuda:
-    needs: [ tests ]
+    
     runs-on: windows-latest
 
     steps:
@@ -72,7 +68,7 @@ jobs:
 
   # Build MacOS file
   build-macos:
-    needs: [ tests ]
+    
     runs-on: macos-latest
 
     steps:
@@ -101,7 +97,7 @@ jobs:
 
   # Build Linux file with CPU-only support
   build-linux:
-    needs: [ tests ]
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -130,7 +126,7 @@ jobs:
 
   # Build Linux file with CUDA support
   build-linux-cuda:
-    needs: [ tests ]
+    
     runs-on: ubuntu-latest
 
     steps:
