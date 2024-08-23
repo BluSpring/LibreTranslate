@@ -33,13 +33,13 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m PyInstaller -F -n "libretranslate" main.py
+        python -m PyInstaller -n "libretranslate" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: 'Windows Artifacts (CPU)'
-        path: 'dist/'
+        path: 'dist/libretranslate/'
 
   # Build Windows EXE with CUDA support
   build-windows-cuda:
@@ -63,13 +63,13 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m PyInstaller -F -n "libretranslate_cuda" main.py
+        python -m PyInstaller -n "libretranslate_cuda" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: 'Windows Artifacts (CUDA)'
-        path: 'dist/'
+        path: 'dist/libretranslate/'
 
   # Build MacOS file
   build-macos:
@@ -93,13 +93,13 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m PyInstaller -F -n "libretranslate" main.py
+        python -m PyInstaller -n "libretranslate" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: 'MacOS Artifacts (CPU)'
-        path: 'dist/'
+        path: 'dist/libretranslate/'
 
   # Build Linux file with CPU-only support
   build-linux:
@@ -123,13 +123,13 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m PyInstaller -F -n "libretranslate" main.py
+        python -m PyInstaller -n "libretranslate" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: 'Linux Artifacts (CPU)'
-        path: 'dist/'
+        path: 'dist/libretranslate/'
 
   # Build Linux file with CUDA support
   build-linux-cuda:
@@ -169,10 +169,10 @@ jobs:
       run: |
         pip install Babel==2.11.0
         python scripts/compile_locales.py
-        python -m PyInstaller -F -n "libretranslate_cuda" main.py
+        python -m PyInstaller -n "libretranslate_cuda" main.py
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
         name: 'Linux Artifacts (CUDA)'
-        path: 'dist/'
+        path: 'dist/libretranslate/'
