@@ -118,6 +118,7 @@ jobs:
         cp -R ./libretranslate/static/ ./dist/libretranslate/_internal/libretranslate/static/
         mkdir -p ./dist/libretranslate/_internal/libretranslate/locales/
         cp -R ./libretranslate/templates/ ./dist/libretranslate/_internal/libretranslate/templates/
+        chmod 777 ./dist/libretranslate/libretranslate
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -158,6 +159,7 @@ jobs:
         cp -r ./libretranslate/static/ ./dist/libretranslate/_internal/libretranslate/static/
         mkdir -p ./dist/libretranslate/_internal/libretranslate/locales/
         cp -r ./libretranslate/templates/ ./dist/libretranslate/_internal/libretranslate/templates/
+        chmod 777 ./dist/libretranslate/libretranslate
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -214,6 +216,7 @@ jobs:
         cp -r ./libretranslate/static/ ./dist/libretranslate_cuda/_internal/libretranslate/static/
         mkdir -p ./dist/libretranslate_cuda/_internal/libretranslate/locales/
         cp -r ./libretranslate/templates/ ./dist/libretranslate_cuda/_internal/libretranslate/templates/
+        chmod 777 ./dist/libretranslate/libretranslate
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
