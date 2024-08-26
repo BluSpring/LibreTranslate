@@ -216,7 +216,7 @@ jobs:
         cp -r ./libretranslate/static/ ./dist/libretranslate_cuda/_internal/libretranslate/static/
         mkdir -p ./dist/libretranslate_cuda/_internal/libretranslate/locales/
         cp -r ./libretranslate/templates/ ./dist/libretranslate_cuda/_internal/libretranslate/templates/
-        chmod 777 ./dist/libretranslate/libretranslate
+        chmod 777 ./dist/libretranslate_cuda/libretranslate_cuda
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
